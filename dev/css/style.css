@@ -1281,17 +1281,12 @@ header .tads_panel .nav-tabs > li > a {
         float: none;
     }
 
-    .dropdown-block .login-form,
     header .auth .login-content .login-form,
-    .dropdown-block .register-form,
     header .auth .register-content .register-form {
         padding-bottom: 0px;
 
     }
 
-    .dropdown-block .login-form,
-    .dropdown-block .register-form {
-        margin-bottom: 0;
-    }
+
 
 }
