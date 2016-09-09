@@ -6,7 +6,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var cssmin = require('gulp-cssmin');
 var cleanCSS = require('gulp-clean-css');
 var minifyjs = require('gulp-js-minify');
-
+var imageResize = require('gulp-image-resize');
+var rename = require("gulp-rename");
 
 gulp.task('autoprefixer', function () {
     return gulp.src('./dev/css/style.css')
@@ -30,7 +31,26 @@ gulp.task('minifyImg', function() {
     gulp.src('dev/images/*')
         .pipe(imagemin())
         .pipe(gulp.dest('images'));
+    gulp.src('dev/images/gallery/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('images/gallery/'));
+    gulp.src('dev/images/gallery/resize/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('images/gallery/resize/'));
 });
+
+/*
+gulp.task('minifyImgGallery', function() {
+
+    gulp.src("dev/images/*")
+        .pipe(imageResize({ width : 150 }))
+        .pipe(rename(function (path) { path.basename += "-thumbnail"; }))
+        .pipe(gulp.dest('images/gallery/resize'));
+    gulp.src('dev/images/gallery/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('images/gallery/'));
+});
+*/
 
 gulp.task('prettifyHtml', function() {
     gulp.src(['./dev/*.html'])
